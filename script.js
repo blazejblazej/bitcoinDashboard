@@ -23,7 +23,12 @@ $(document).ready(function () {
         chartPadding: {
           right: 50
         },
-        showArea: true
+        showArea: true,
+        plugins: [
+          Chartist.plugins.ctPointLabels({
+            textAnchor: 'middle'
+          })
+        ]
       });
     }
 
@@ -62,7 +67,6 @@ $(document).ready(function () {
         function countdown() {
           if (remainingTime == -1) {
             clearTimeout(timer);
-            doSomething();
           } else {
             elem.innerHTML = remainingTime + ' seconds';
             remainingTime--; //we subtract the second each iteration
