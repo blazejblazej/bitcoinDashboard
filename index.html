@@ -14,14 +14,47 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="block"></div>
+
+        <div class="block imageComparison" id="poundVsUsd">
+            <h2>Dollar vs pound size comparison</h2>
+            <div class="container">
+                <div class="gbp">
+                    <img src="images/pound.png" class="pound" id="pound">
+                </div>
+                <div class="usd">
+                    <img src="images/dollar.png" class="dollar" id="dollar">
+                </div>
+            </div>
+        </div>
+
+
         <div class="block">
             <h2>BITCOIN VALUE IN $</h2>
 
         <div class="bitcoin-chart ct-chart" id="line-chart"></div>
         <p>Updates every 30 seconds</p>
     </div>
-        <div class="block name" id="results"></div>
+
+
+    <div class="block spinningcoin" id="results">
+        <h2>Spinning coin</h2>
+        <p class="paragraph"><span style="color: red">Red</span> = Bitcoin price drop <br> <span style="color: green">Green</span> = Bitcoin price rise</p>
+        <div class="container">
+            <div class="coin-container">
+              <div class="coin">
+                <div class="coin__edge"></div>
+                <div class="coin__side coin__side--front">
+                  <img class="coin__image" id="coin__imageFront" src="https://purepng.com/public/uploads/large/purepng.com-black-coincoinsmetaldollarblack-14215264847000sfms.png">
+                </div>
+                <div class="coin__side coin__side--back">
+                  <img class="coin__image" id="coin__imageBack" src="https://purepng.com/public/uploads/large/purepng.com-black-coincoinsmetaldollarblack-14215264847000sfms.png">
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
         <div class="block">
             <h2>Currencies comparison related to BTC rate</h2>
             <div class="ct-chart bar-chart" id="bar-chart"></div>

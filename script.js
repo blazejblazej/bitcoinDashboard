@@ -96,3 +96,58 @@ $(document).ready(function () {
   })();
   // document ready function end
 });
+
+
+
+
+
+//USD vs GBP
+
+usdRate = [];
+gbpRate = [];
+
+(function getBitcoinValue() {
+  $.ajax({
+    url: 'https://api.coindesk.com/v1/bpi/currentprice.json', 
+    dataType: "json",
+    
+    success: function(data) {
+      
+      usdRate.push(Math.floor(data["bpi"]["USD"]["rate_float"]));          //get values from api
+      gbpRate.push(Math.floor(data["bpi"]["GBP"]["rate_float"]));
+      console.log("BTC RATE USD:" + usdRate);
+      console.log("BTC RATE GBP:" + gbpRate);
+      
+
+      var gbpresult = String(gbpRate[gbpRate.length-1]/200) + "px";                          //put them into two vars wich turns them into strings and adds px at the end
+
+      var usdresult = String(usdRate[usdRate.length-1]/200) + "px";
+
+      console.log(gbpresult + usdresult);
+ 
+      document.getElementById("pound").style.height = gbpresult;          //change the height of the images with the new variables that have the api results in them.
+      document.getElementById("dollar").style.height = usdresult; 
+
+      if (gbpRate.length > 2) {                                           //if statement 
+        if (gbpRate[gbpRate.length-1] > gbpRate[gbpRate.length-2]) {
+          document.getElementById("coin__imageFront").style.backgroundColor = "green";
+          document.getElementById("coin__imageBack").style.backgroundColor = "green";
+          
+          
+        } else {
+          document.getElementById("coin__imageFront").style.backgroundColor = "red";
+          document.getElementById("coin__imageBack").style.backgroundColor = "red";
+        }
+      }
+    },
+
+  
+    
+    complete: function() {
+      // Schedule the next request when the current one's complete
+      setTimeout(getBitcoinValue, 30000);
+    }
+  }); 
+})();
+
+
